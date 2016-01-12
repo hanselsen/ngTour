@@ -1,0 +1,21 @@
+{
+  "name": "hanselsen/ngTour",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "ngTour.js",
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.5",
+    "angular-bootstrap": "~0.14.3",
+    "angular-scroll": "~1.0.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "package.json",
+    "Gruntfile.js"
+  ]
+}

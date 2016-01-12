@@ -1,0 +1,27 @@
+.tourCanvas .area {
+	background-color: transparent;
+	border-radius: 5px;
+	width: 100%;
+	height: 100%;
+}
+.tourCanvas .layover {
+	position: absolute;
+	left: -4800px;
+	top: -3700px;
+	width: 8075px;
+	height: 8000px;
+	border: 3900px solid;
+	border-radius: 3905px;
+	z-index: 9999;
+	border-color: rgba(0, 0, 0, .7);
+	transition: all 0.5s;
+}
+.tour-step-content {
+	padding: 10px 0;
+}
+.tour-step-buttons {
+	height: 30px;
+}
+.popover-content {
+	min-width: 250px;
+}
