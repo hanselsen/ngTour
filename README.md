@@ -5,7 +5,10 @@ A tour directive to provide your users a tour of the different key-features of y
 
 Example
 -------
-Check out the files in the demo folder for usage.
+
+Check out [http://hanselsen.github.io/ngTour/](http://hanselsen.github.io/ngTour/)  
+  
+Check out the files in the demo folder for usage.  
 
 Install
 -------
