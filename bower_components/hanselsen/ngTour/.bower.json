@@ -18,14 +18,14 @@
     "Gruntfile.js"
   ],
   "homepage": "https://github.com/hanselsen/ngTour",
-  "_release": "78ce2818b4",
+  "_release": "1646c6ba7a",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "78ce2818b4a90463ede952b7d6ea55556485d85d"
+    "commit": "1646c6ba7a62beb037976e25dd26c788cdaf65c2"
   },
   "_source": "git://github.com/hanselsen/ngTour.git",
   "_target": "*",
-  "_originalSource": "ng-route",
+  "_originalSource": "ng-tour",
   "_direct": true
 }

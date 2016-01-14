@@ -1,0 +1,22 @@
+{
+  "name": "ngTourPage",
+  "homepage": "https://github.com/hanselsen/ngTour",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "authors": [
+    "Hanselsen"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "hanselsen/ngTour": "ng-tour#*"
+  }
+}

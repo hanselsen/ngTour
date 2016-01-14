@@ -5,7 +5,7 @@
 	height: 100%;
 }
 .tourCanvas .layover {
-	position: absolute;
+	position: fixed;
 	left: -4800px;
 	top: -3700px;
 	width: 8075px;
