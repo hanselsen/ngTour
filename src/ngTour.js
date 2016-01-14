@@ -10,46 +10,58 @@
 
 		var canvas = $('<div class="tourCanvas"><div class="layover" /></div>');
 
+		var elements = [];
+
 		return {
 			restrict: 'A',
 			scope: true,
 			link: function (scope, elm, attrs) {
 				scope.padding = 10;
 				var recalculate = function (i) {
-					if($(elements[i]).offset() == undefined) return;
-					$('.tourCanvas .layover')
-						.css('left', ((baseLeft - $(elements[i]).offset().left)*-1) -scope.padding/2)
-						.css('top', ((baseTop - $(elements[i]).offset().top)*-1) -scope.padding/2)
-						.css('width', (baseWidth + elements[i].offsetWidth) + scope.padding)
-						.css('height', (baseHeight + elements[i].offsetHeight) + scope.padding);
-					$('.tourCanvas .layover .area, [uib-popover-template-popup]').remove();
-					$('<div class="area" />')
-						.attr('uib-popover-template', "'tour"+(i+1)+".html'")
-						.attr('popover-popup-delay', '500')
-						.attr('popover-placement', 'bottom')
-						.attr('popover-is-open', true)
-						.appendTo('.tourCanvas .layover');
-					$compile(angular.element('.tourCanvas').contents())(scope);
-
-					$document.scrollToElementAnimated(elements[i], 100);
+					var currentElement = $('[ng-tour] [tour-step='+scope.tourStep+']');
+					if(currentElement.offset() == undefined) return;
+					$('[uib-popover-template-popup]').fadeOut(200);
+					$document.scrollToElementAnimated(currentElement[0], 100, 200);
 					$timeout(function () {
-						$compile(angular.element('.popover-content').contents())(scope);
-					}, 550);
+						var t = $(window).scrollTop();
+						$('.tourCanvas .layover')
+							.css('left', ((baseLeft - currentElement.offset().left)*-1) -scope.padding/2)
+							.css('top', ((baseTop - currentElement.offset().top+t)*-1) -scope.padding/2)
+							.css('width', (baseWidth + currentElement[0].offsetWidth) + scope.padding)
+							.css('height', (baseHeight + currentElement[0].offsetHeight) + scope.padding);
+						$('.tourCanvas .layover .area, [uib-popover-template-popup]').remove();
+						var placement = 'bottom';
+						if($(elements[i]).attr('tour-placement') != undefined) {
+							placement = currentElement.attr('tour-placement');
+						}
+						$('<div class="area" />')
+							.attr('uib-popover-template', "'tour"+i+".html'")
+							.attr('popover-popup-delay', '500')
+							.attr('popover-placement', placement)
+							.attr('popover-is-open', true)
+							.appendTo('.tourCanvas .layover');
+						$compile(angular.element('.tourCanvas').contents())(scope);
+
+						$timeout(function () {
+							$compile(angular.element('.popover-content').contents())(scope);
+						}, 550);
+					}, 200);
 				};
 				$( window ).resize(function() { recalculate(scope.tourStep); });
 				scope.$watch('tourStep', function (val) {
 					if(val == undefined) return;
 					recalculate(scope.tourStep);
 				});
-				var elements = $(elm).find('[tour-step]').sort(function (a, b) {
+				elements = $(elm).find('[tour-step]').sort(function (a, b) {
 					var stepA = parseInt($(a).attr('step'));
 					var stepB = parseInt($(b).attr('step'));
 					return stepB - stepA;
 				});
+
 				scope.startTour = function () {
 					$(elm).prepend(canvas.clone());
 					$compile(angular.element('.tourCanvas').contents())(scope);
-					scope.tourStep = 0;
+					scope.tourStep = 1;
 				};
 				scope.stopTour = function () {
 					$('[uib-popover-template-popup]').remove();
