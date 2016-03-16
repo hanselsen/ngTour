@@ -31,7 +31,7 @@
 							.css('height', (baseHeight + currentElement[0].offsetHeight) + scope.padding);
 						$('.tourCanvas .layover .area, [uib-popover-template-popup]').remove();
 						var placement = 'bottom';
-						if($(elements[i]).attr('tour-placement') != undefined) {
+						if(currentElement.attr('tour-placement') != undefined) {
 							placement = currentElement.attr('tour-placement');
 						}
 						$('<div class="area" />')
