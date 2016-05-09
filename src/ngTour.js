@@ -62,12 +62,14 @@
 					$(elm).prepend(canvas.clone());
 					$compile(angular.element('.tourCanvas').contents())(scope);
 					scope.tourStep = 1;
+					$rootScope.$broadcast('tourStarted');
 				};
 				scope.stopTour = function () {
 					$('[uib-popover-template-popup]').remove();
 					$('.tourCanvas .layover').attr('style', '');
 					$('.tourCanvas').remove();
 					delete scope.tourStep;
+					$rootScope.$broadcast('tourStopped');
 				};
 			}
 		};
