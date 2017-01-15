@@ -50,7 +50,9 @@
 				$( window ).resize(function() { recalculate(scope.tourStep); });
 				scope.$watch('tourStep', function (val) {
 					if(val == undefined) return;
-					recalculate(scope.tourStep);
+					$timeout(function () {
+						recalculate(scope.tourStep);
+					},50);
 				});
 				elements = $(elm).find('[tour-step]').sort(function (a, b) {
 					var stepA = parseInt($(a).attr('step'));
