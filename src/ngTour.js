@@ -18,7 +18,7 @@
 			link: function (scope, elm, attrs) {
 				scope.padding = 10;
 				var recalculate = function (i) {
-					var currentElement = $('[ng-tour] [tour-step='+scope.tourStep+']');
+					var currentElement = $('[ng-tour] [tour-step='+scope.tourStep+']:visible');
 					if(currentElement.offset() == undefined) return;
 					$('[uib-popover-template-popup]').fadeOut(200);
 					$document.scrollToElementAnimated(currentElement[0], 100, 200);
