@@ -38,6 +38,7 @@
 							.attr('uib-popover-template', "'tour"+i+".html'")
 							.attr('popover-popup-delay', '500')
 							.attr('popover-placement', placement)
+							.attr('popover-trigger', 'manual')
 							.attr('popover-is-open', true)
 							.appendTo('.tourCanvas .layover');
 						$compile(angular.element('.tourCanvas').contents())(scope);
